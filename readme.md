@@ -42,6 +42,31 @@
 
 2、 程序架构设计
 
+    - 三层架构
+        - 用户视图层
+            - 用于与用户进行交互
+            - 小的逻辑判断，比如注册功能中两次密码是否一致的校验
+            - core
+                - src.py 主视图
+                - admin.py
+                    admin_view
+                - student.py
+                    student_view
+                - teacher.py
+                    teacher_view
+        - 逻辑接口层
+            - 核心业务逻辑的处理
+            - interface
+                - admin_interface.py
+                - student_interface.py
+                - teacher_interface.py
+        - 数据处理层
+            - 做数据的处理，比如数据的增、删、改、查
+            - db
+                - models.py
+                - db_handler.py
+                    - pickle 保存数据
+
 3、 分任务开发
 
 4、 测试
