@@ -1,3 +1,9 @@
+from lib import common
+
+
+student_info = {
+    "user": None
+}
 
 
 def register():
@@ -8,14 +14,17 @@ def login():
     pass
 
 
+@common.auth("student")
 def choice_school():
     pass
 
 
+@common.auth("student")
 def choice_course():
     pass
 
 
+@common.auth("student")
 def check_score():
     pass
 
@@ -40,7 +49,7 @@ def student_view():
             """
               )
 
-        choice = input("请输入功能编号").strip()
+        choice = input("请输入功能编号：").strip()
         if choice == "q":
             break
 

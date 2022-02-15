@@ -1,20 +1,30 @@
+from lib import common
+
+teacher_info = {
+    "user": None
+}
+
 
 def login():
     pass
 
 
+@common.auth("teacher")
 def check_course():
     pass
 
 
+@common.auth("teacher")
 def choose_course():
     pass
 
 
+@common.auth("teacher")
 def check_stu_from_course():
     pass
 
 
+@common.auth("teacher")
 def change_score_from_student():
     pass
 
@@ -39,7 +49,7 @@ def teacher_view():
             """
               )
 
-        choice = input("请输入功能编号").strip()
+        choice = input("请输入功能编号：").strip()
         if choice == "q":
             break
 
