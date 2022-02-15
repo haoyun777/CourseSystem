@@ -20,11 +20,18 @@ class Admin(Base):
         school_obj = School(school_name, school_addr)
         school_obj.save()
 
-    def create_course(self):
-        pass
+    def create_course(self, school_obj, course_name):
+        # 调用课程类，实例化创建课程
+        course_obj = Course(course_name,)
+        course_obj.save()
 
-    def create_teacher(self):
-        pass
+        # 获取当前学校对象，并将课程添加到课程列表中
+        school_obj.course_list.append(course_name)
+        school_obj.save()
+
+    def create_teacher(self, teacher_name, teacher_pwd):
+        teacher_obj = Teacher(teacher_name,teacher_pwd)
+        teacher_obj.save()
 
 
 class School(Base):
@@ -40,10 +47,16 @@ class Student(Base):
 
 
 class Course(Base):
-    pass
+    def __init__(self, course_name):
+        self.user = course_name
+        self.student_list = []
 
 
 class Teacher(Base):
-    pass
+    def __init__(self, teacher_name, teacher_pwd):
+        self.user = teacher_name
+        self.pwd = teacher_pwd
+        self.course_list_from_tea = []
+
 
 
