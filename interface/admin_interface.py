@@ -16,18 +16,6 @@ def admin_register_interface(username, password):
     return True, "注册成功！"
 
 
-def admin_login_interface(username, password):
-
-    admin_obj = models.Admin.select(username)
-
-    if not admin_obj:
-        return False, "用户不存在！"
-
-    if admin_obj.pwd == password:
-        return True, "登陆成功！"
-    else:
-        return False, "密码错误！"
-
 
 def create_school_interface(school_name, school_addr, admin_name):
 

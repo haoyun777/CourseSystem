@@ -30,10 +30,14 @@ def register():
 def login():
     while True:
         username = input("请输入用户名：").strip()
+        if not username:
+            print("用户名不能为空！")
+            continue
+
         password = input("请输入密码：").strip()
 
-        flag, msg = admin_interface.admin_login_interface(
-            username, password
+        flag, msg = common_interface.login_interface(
+            username, password, user_type="admin"
         )
 
         print(msg)

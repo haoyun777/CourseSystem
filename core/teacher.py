@@ -1,4 +1,5 @@
 from lib import common
+from interface import common_interface
 
 teacher_info = {
     "user": None
@@ -6,7 +7,22 @@ teacher_info = {
 
 
 def login():
-    pass
+    while True:
+        username = input("请输入用户名：").strip()
+        if username == "":
+            print("用户名不能为空！")
+            continue
+
+        password = input("请输入密码：").strip()
+
+        flag, msg = common_interface.login_interface(
+            username, password, user_type="teacher"
+        )
+
+        print(msg)
+        if flag:
+            teacher_info["user"] = username
+            break
 
 
 @common.auth("teacher")

@@ -1,5 +1,6 @@
 import os
 from conf import settings
+from db import models
 
 
 def get_all_school_interface():
@@ -12,3 +13,23 @@ def get_all_school_interface():
 
     school_list = os.listdir(school_dir)
     return True, school_list
+
+
+# 公共登陆接口
+def login_interface(username, password, user_type):
+    if user_type == "admin":
+        obj = models.Admin.select(username)
+    elif user_type == "student":
+        obj = models.Student.select(username)
+    elif user_type == "teacher":
+        obj = models.Teacher.select(username)
+    else:
+        return False, "登陆角色错误，请输入正确的登陆角色！"
+
+    if not obj:
+        return False, "用户不存在！"
+
+    if obj.pwd == password:
+        return True, "登陆成功！"
+    else:
+        return False, "密码错误！"

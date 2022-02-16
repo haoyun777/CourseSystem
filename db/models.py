@@ -30,7 +30,7 @@ class Admin(Base):
         school_obj.save()
 
     def create_teacher(self, teacher_name, teacher_pwd):
-        teacher_obj = Teacher(teacher_name,teacher_pwd)
+        teacher_obj = Teacher(teacher_name, teacher_pwd)
         teacher_obj.save()
 
 
@@ -41,9 +41,18 @@ class School(Base):
         self.course_list = []
 
 
-
 class Student(Base):
-    pass
+    def __init__(self, student_name, student_pwd):
+        self.user = student_name
+        self.pwd = student_pwd
+        self.school = None
+        self.course_list = []
+        self.score = {}  # {"course_name": 100}
+        self.payed = {}  # {"course_name": False}
+
+    def add_school(self, school_name):
+        self.school = school_name
+        self.save()
 
 
 class Course(Base):
