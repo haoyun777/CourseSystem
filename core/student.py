@@ -81,12 +81,54 @@ def choice_school():
 
 @common.auth("student")
 def choice_course():
-    pass
+    while True:
+        # 1.获取当前学生所在学校的课程列表
+        flag, course_list = student_interface.get_course_list_interface(
+            student_info.get("user")
+        )
+
+        if not flag:
+            print(course_list)
+            break
+
+        # 2.打印课程列表
+        for index, course in enumerate(course_list):
+            print(f"编号：{index}      课程：【{course}】")
+
+        # 3.选择课程
+        choice = input("请输入选择的课程编号：").strip()
+        if not choice.isdigit():
+            print("输入有误！")
+            continue
+
+        choice = int(choice)
+
+        if choice not in range(len(course_list)):
+            print("输入编号有误！")
+            continue
+
+        course_name = course_list[choice]
+
+        # 4.调用学生选择课程接口
+        flag, msg = student_interface.add_course_interface(
+            course_name, student_info.get("user")
+        )
+
+        print(msg)
+        if flag:
+            break
 
 
 @common.auth("student")
 def check_score():
-    pass
+    student_score = student_interface.check_score_interface(
+        student_info.get("user")
+    )
+    if student_score:
+        for k, v in student_score.items():
+            print(f"【{k}】分数：{v}")
+    else:
+        print(student_score)
 
 
 func_dic = {

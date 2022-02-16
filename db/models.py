@@ -54,6 +54,17 @@ class Student(Base):
         self.school = school_name
         self.save()
 
+    def add_course(self, course_name):
+
+        self.course_list.append(course_name)
+        self.score[course_name] = 0
+        self.save()
+
+        course_obj = Course.select(course_name)
+        course_obj.student_list.append(self.user)
+        course_obj.save()
+
+
 
 class Course(Base):
     def __init__(self, course_name):
