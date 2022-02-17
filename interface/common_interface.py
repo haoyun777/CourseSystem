@@ -15,6 +15,14 @@ def get_all_school_interface():
     return True, school_list
 
 
+def get_all_course_in_school_interface(school_name):
+    school_obj = models.School.select(school_name)
+    course_list = school_obj.course_list
+    if not course_list:
+        return False, "该学校没有课程！"
+    return True, course_list
+
+
 # 公共登陆接口
 def login_interface(username, password, user_type):
     if user_type == "admin":

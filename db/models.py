@@ -76,7 +76,33 @@ class Teacher(Base):
     def __init__(self, teacher_name, teacher_pwd):
         self.user = teacher_name
         self.pwd = teacher_pwd
-        self.course_list_from_tea = []
+        self.__course_list_from_tea = []
 
+    @property
+    def show_course(self):
+        return self.__course_list_from_tea
 
+    def add_course(self, course_name):
+
+        self.__course_list_from_tea.append(course_name)
+        self.save()
+
+    def get_student(self, course_name):
+
+        course_obj = Course.select(course_name)
+        return course_obj.student_list
+
+    @staticmethod
+    def get_student_score(student_name, course_name):
+
+        student_obj = Student.select(student_name)
+        student_course_score = student_obj.score[course_name]
+        return student_course_score
+
+    @staticmethod
+    def update_student_score(student_name, course_name, score):
+
+        student_obj = Student.select(student_name)
+        student_obj.score[course_name] = score
+        student_obj.save()
 
