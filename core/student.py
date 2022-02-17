@@ -3,7 +3,7 @@ from interface import student_interface
 from interface import common_interface
 
 student_info = {
-    "user": None
+    "user": ""
 }
 
 
@@ -76,7 +76,6 @@ def choice_school():
         print(msg)
         if flag:
             break
-
 
 
 @common.auth("student")

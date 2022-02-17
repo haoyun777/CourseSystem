@@ -3,14 +3,14 @@ from interface import common_interface
 from interface import teacher_interface
 
 teacher_info = {
-    "user": None
+    "user": ""
 }
 
 
 def login():
     while True:
         username = input("请输入用户名：").strip()
-        if username == "":
+        if not username:
             print("用户名不能为空！")
             continue
 
@@ -64,18 +64,18 @@ def choose_course():
         school_name = school_list[choice_school]
 
         # 再选择课程
-        ## 1.获取所选择的学校课程列表
+        # 1.获取所选择的学校课程列表
         flag, course_list = common_interface.get_all_course_in_school_interface(school_name)
 
         if not flag:
             print(course_list)
             break
 
-        ## 2.打印课程列表
+        # 2.打印课程列表
         for index, course in enumerate(course_list):
             print(f"编号：{index}      课程：【{course}】")
 
-        ## 3.选择课程
+        # 3.选择课程
         choice_course = input("请输入选择的课程编号：").strip()
         if not choice_course.isdigit():
             print("输入有误！")
@@ -88,7 +88,6 @@ def choose_course():
             continue
 
         course_name = course_list[choice_course]
-
 
         # 调用教师选择课程接口
         flag, msg = teacher_interface.add_course_interface(
@@ -131,6 +130,7 @@ def check_stu_from_course():
         )
         print(student_list)
         break
+
 
 @common.auth("teacher")
 def change_score_from_student():

@@ -38,5 +38,3 @@ def auth(role):
 
         return inner
     return login_auth
-
-

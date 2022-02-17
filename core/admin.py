@@ -3,8 +3,9 @@ from lib import common
 
 
 admin_info = {
-    "user": None
+    "user": ""
 }
+
 
 def register():
     while True:
@@ -44,9 +45,6 @@ def login():
         if flag:
             admin_info["user"] = username
             break
-
-
-
 
 
 @common.auth("admin")

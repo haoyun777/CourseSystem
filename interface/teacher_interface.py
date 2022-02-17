@@ -41,4 +41,3 @@ def update_student_course_score_interface(student_name, course_name, score):
     models.Teacher.update_student_score(student_name, course_name, score)
 
     return True, f"学生【{student_name}】的【{course_name}】课程分数更新成功，当前分数：{score}"
-

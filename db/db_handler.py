@@ -2,6 +2,7 @@ import os
 import pickle
 from conf import settings
 
+
 def save_data(obj):
 
     class_name = obj.__class__.__name__
@@ -24,7 +25,6 @@ def save_data(obj):
         pickle.dump(obj, f)
 
 
-
 def select_data(cls, username):
     class_name = cls.__name__
 
@@ -44,7 +44,6 @@ def select_data(cls, username):
     # 判断文件是否存在
     if not os.path.exists(user_path):
         return None
-
 
     # 打开文件，获取对象
     with open(user_path, 'rb') as f:

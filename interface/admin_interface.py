@@ -16,7 +16,6 @@ def admin_register_interface(username, password):
     return True, "注册成功！"
 
 
-
 def create_school_interface(school_name, school_addr, admin_name):
 
     # 查看当前学校是否已存在, school_obj --> 对象 or None

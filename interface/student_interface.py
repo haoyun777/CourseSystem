@@ -41,6 +41,7 @@ def get_course_list_interface(student_name):
 
     return True, course_list
 
+
 def add_course_interface(course_name, student_name):
 
     # 先判断当前课程是否已经被选择过
@@ -59,4 +60,3 @@ def add_course_interface(course_name, student_name):
 def check_score_interface(student_name):
     student_obj = models.Student.select(student_name)
     return student_obj.score
-

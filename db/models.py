@@ -65,7 +65,6 @@ class Student(Base):
         course_obj.save()
 
 
-
 class Course(Base):
     def __init__(self, course_name):
         self.user = course_name
@@ -105,4 +104,3 @@ class Teacher(Base):
         student_obj = Student.select(student_name)
         student_obj.score[course_name] = score
         student_obj.save()
-
